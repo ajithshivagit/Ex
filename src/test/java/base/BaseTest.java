@@ -1,5 +1,7 @@
 package base;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -9,21 +11,21 @@ public class BaseTest {
 
 	public WebDriver driver;
 
-	
-  @BeforeMethod
-  public void beforeTest() {
-	  System.setProperty("webdriver.chrome.driver",
-              "C:\\Users\\ajith\\OneDrive\\Desktop\\Vcube\\chromedriver-win64\\chromedriver.exe");
+    @BeforeMethod
+    public void setup() {
 
-      driver = new ChromeDriver();
-      driver.manage().window().maximize();
-      driver.get("https://the-internet.herokuapp.com/login");
-  
-  }
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\ajith\\OneDrive\\Desktop\\Vcube\\chromedriver-win64\\chromedriver.exe");
 
-  @AfterMethod
-  public void afterTest() {
-	  driver.quit();
-  }
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://ai4coolkids.com/home");
+    }
+
+    @AfterMethod
+    public void tearDown() {
+            driver.quit();
+    }
 
 }
