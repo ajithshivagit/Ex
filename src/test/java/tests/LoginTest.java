@@ -8,7 +8,7 @@ import pages.LoginPage;
 
 public class LoginTest extends BaseTest{
 	@Test
-	public void loginAndLogout() {
+	public void login() {
 
 		LoginPage a = PageFactory.initElements(driver, LoginPage.class);
 		a.clickOnLoginHome();
